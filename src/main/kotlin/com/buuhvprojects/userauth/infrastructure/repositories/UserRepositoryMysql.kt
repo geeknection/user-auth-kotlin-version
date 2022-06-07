@@ -4,7 +4,7 @@ import com.buuhvprojects.userauth.application.interfaces.User
 import com.buuhvprojects.userauth.application.interfaces.UserRole
 import java.util.Date
 
-class UserRepositoryMysql {
+class UserRepository {
     companion object {
         @JvmStatic
         fun findByEmail(email: String, fields: Array<String>): User? {
