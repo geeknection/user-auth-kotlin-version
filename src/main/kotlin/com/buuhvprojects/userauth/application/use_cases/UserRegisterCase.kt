@@ -4,7 +4,7 @@ import com.buuhvprojects.userauth.application.interfaces.APIReturn
 import com.buuhvprojects.userauth.application.interfaces.UserRegisterData
 import com.buuhvprojects.userauth.domain.UseCaseDomain
 import com.buuhvprojects.userauth.domain.UserRegisterDomain
-import com.buuhvprojects.userauth.infrastructure.repositories.UserRepositoryMysql
+import com.buuhvprojects.userauth.infrastructure.repositories.UserRepository
 
 class UserRegisterCase : UseCaseDomain {
     override val response = APIReturn();
@@ -16,7 +16,7 @@ class UserRegisterCase : UseCaseDomain {
         val registerDomain = UserRegisterDomain(this.userData);
 
         val fields = arrayOf("id");
-        val user = UserRepositoryMysql.findByEmail(registerDomain.email, fields);
+        val user = UserRepository.findByEmail(registerDomain.email, fields);
         if (user !== null) {
             this.response.status = false;
             this.response.message = "Usuário já existente com esse email";
